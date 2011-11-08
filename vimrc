@@ -15,6 +15,7 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
 set number              " line number
+set foldmethod=syntax   " folding
 
 
 filetype on           " Enable filetype detection
@@ -30,6 +31,7 @@ syntax on		" syntax highlight
 set hlsearch		" search highlighting
 
 if has("gui_running")	" GUI color and font settings
+  set go=mcr            " only mune
   set guifont=Osaka-Mono:h20
   set background=dark 
   set t_Co=256          " 256 color mode
@@ -120,6 +122,9 @@ let g:mapleader=","
 
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
+
+"open the NERDTree
+map ntree :NERDTree<CR>
 
 " open the error console
 map <leader>cc :botright cope<CR> 
@@ -229,7 +234,7 @@ endif
 " make CSS omnicompletion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
 autocmd BufNewFile,BufRead *.sass             set ft=sass.css
-autocmd BufNewFile,BufRead *.cls,*.trigger    set ft=java
+autocmd BufNewFile,BufRead *.cls,*.trigger    set ft=java syntax=apex
 autocmd bufNewFile,BufRead jquery.*.js        set ft=javascript syntax=jquery
 
 "--------------------------------------------------------------------------- 
@@ -279,9 +284,6 @@ let g:tex_flavor='latex'
 " --- AutoClose - Inserts matching bracket, paren, brace or quote 
 " fixed the arrow key problems caused by AutoClose
 if !has("gui_running")
-   "only menu
-   set go=mcr
-
    set term=linux
    imap OA <ESC>ki
    imap OB <ESC>ji
@@ -293,16 +295,6 @@ if !has("gui_running")
    nmap OC l
    nmap OD h
 endif
-
-" Under the Mac(MacVim)
-if has("gui_macvim")
-    set go=mcr
-    " full screen    
-    map <Leader><Leader>  :call FullScreenToggle()<cr>
-    " Set input method off
-    set imdisable
-endif
-
 
 " --- Command-T
 let g:CommandTMaxHeight = 15
