@@ -1,9 +1,8 @@
-" vgod's vimrc
+" jair's vimrc
 " Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>
 " Fork me on GITHUB  https://github.com/vgod/vimrc
 
 " read https://github.com/vgod/vimrc/blob/master/README.md for more info
-
 
 " For pathogen.vim: auto load all plugins in .vim/bundle
 call pathogen#infect()
@@ -66,8 +65,8 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=3 
-   set shiftwidth=3 
+   set softtabstop=4
+   set shiftwidth=4
 
    au FileType Makefile set noexpandtab
 "}      							
@@ -230,6 +229,8 @@ endif
 " make CSS omnicompletion work for SASS and SCSS
 autocmd BufNewFile,BufRead *.scss             set ft=scss.css
 autocmd BufNewFile,BufRead *.sass             set ft=sass.css
+autocmd BufNewFile,BufRead *.cls,*.trigger    set ft=java
+autocmd bufNewFile,BufRead jquery.*.js        set ft=javascript syntax=jquery
 
 "--------------------------------------------------------------------------- 
 " ENCODING SETTINGS
@@ -277,7 +278,10 @@ let g:tex_flavor='latex'
 
 " --- AutoClose - Inserts matching bracket, paren, brace or quote 
 " fixed the arrow key problems caused by AutoClose
-if !has("gui_running")	
+if !has("gui_running")
+   "only menu
+   set go=mcr
+
    set term=linux
    imap OA <ESC>ki
    imap OB <ESC>ji
@@ -290,6 +294,14 @@ if !has("gui_running")
    nmap OD h
 endif
 
+" Under the Mac(MacVim)
+if has("gui_macvim")
+    set go=mcr
+    " full screen    
+    map <Leader><Leader>  :call FullScreenToggle()<cr>
+    " Set input method off
+    set imdisable
+endif
 
 
 " --- Command-T
