@@ -58,3 +58,6 @@
 [submodule "bundle/forcedotcom"]
 	path = bundle/forcedotcom
 	url = git@github.com:jairzh/vim-forcedotcom.git
+[submodule "bundle/antmenu"]
+	path = bundle/antmenu
+	url = https://github.com/vim-scripts/ant_menu.vim.git
