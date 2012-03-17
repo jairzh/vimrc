@@ -55,3 +55,6 @@
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
+[submodule "bundle/forcedotcom"]
+	path = bundle/forcedotcom
+	url = git@github.com:jairzh/vim-forcedotcom.git
