@@ -1,8 +1,6 @@
-vgod's vimrc
+Jair's vimrc
 ============
-Author: Tsung-Hsiang (Sean) Chang <vgod@vgod.tw>
-
-Fork me on GITHUB  https://github.com/vgod/vimrc.
+Forked form https://github.com/vgod/vimrc.
 
 ONE-STEP INSTALL
 ----------------
@@ -59,6 +57,11 @@ which can be upgraded with `git pull`. For example, to upgrade Command-T
 
      cd ~/.vim/bundle/command-t
      git pull
+
+Upgrading all bundled pugins
+
+     git submodule foreach git pull origin master
+     git submodule update
 
 To install a new plugin as a git submoudle, type the followin commands.
 
@@ -127,5 +130,6 @@ Language specific supports
 Other good references
 ---------------------
 
-* http://amix.dk/vim/vimrc.html
-* http://spf13.com/post/perfect-vimrc-vim-config-file
+* [Synchronizing plugins with git submodules and pathogen](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/) : How to keep your vimrc and plugins synchronized using git submodules and the pathogen plugin
+* [spf13-vim : Steve Francia's Vim Distribution](http://spf13.com/post/perfect-vimrc-vim-config-file
+)
