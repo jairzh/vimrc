@@ -303,8 +303,14 @@ let g:CommandTMaxHeight = 15
 let g:SuperTabDefaultCompletionType = "context"
 
 " --- EasyMotion
-"let g:EasyMotion_leader_key = '<Leader>m' " default is <Leader>w
+let g:EasyMotion_leader_key = '<Leader>m' " default is <Leader>w
 
 " --- Ctags
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
+" --- Taglist
+let g:Tlist_Show_Menu = 1
+let g:Tlist_Use_Right_Window = 1
+
+" apex language with java
+let tlist_apex_settings = 'java;p:package;c:class;i:interface;f:field;m:method'
