@@ -16,19 +16,55 @@ set ruler		" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
 set number              " line number
 set foldmethod=syntax   " folding
+"set foldlevelstart=20   " foldlevel to a high setting, files are always loaded with opened folds
+"set relativenumber     " display how far away each line is from the current one
+"set undofile           " undo previous actions even after you close and reopen a file
 
+set clipboard=unnamed	" yank to the system register (*) by default
+set showmode		" Show current mode
+set wildchar=<TAB>	" start wild expansion in the command line using <TAB>
+set wildmenu            " wild char completion menu
+set wildmode=list:longest
+
+" ignore these files while expanding wild chars
+set wildignore=*.o,*.class,*.pyc
+
+set autoindent		" auto indentation
+set nobackup		" no *~ backup files
+set copyindent		" copy the previous indentation on autoindenting
+set ignorecase		" ignore case when searching
+set incsearch		" incremental search
+set showmatch		" Cursor shows matching ) and }
+set hlsearch		" search highlighting
+set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
+set smarttab		" insert tabs on the start of a line according to context
+set noendofline binary  " save a file with no terminator after the last line
+
+" disable sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+"set wrap
+"set textwidth=79
+"set formatoptions=qrn1
+"set colorcolumn=85      " show a colored column at 85 characters
+
+"set list
+"set listchars=tab:▸\ ,eol:¬
 
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
+"executes the zR (opens all folds) command in normal mode
+au BufRead * normal zR
 
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
-
 syntax on		" syntax highlight
-set hlsearch		" search highlighting
 
 if has("gui_running")	" GUI color and font settings
   set go=mcr            " only mune
@@ -42,28 +78,6 @@ else
   colors vgod
 endif
 
-set clipboard=unnamed	" yank to the system register (*) by default
-set showmatch		" Cursor shows matching ) and }
-set showmode		" Show current mode
-set wildchar=<TAB>	" start wild expansion in the command line using <TAB>
-set wildmenu            " wild char completion menu
-
-" ignore these files while expanding wild chars
-set wildignore=*.o,*.class,*.pyc
-
-set autoindent		" auto indentation
-set incsearch		" incremental search
-set nobackup		" no *~ backup files
-set copyindent		" copy the previous indentation on autoindenting
-set ignorecase		" ignore case when searching
-set smartcase		" ignore case if search pattern is all lowercase,case-sensitive otherwise
-set smarttab		" insert tabs on the start of a line according to context
-
-" disable sound on errors
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
@@ -122,9 +136,14 @@ let g:mapleader=","
 
 "replace the current word in all opened buffers
 map <leader>r :call Replace()<CR>
-
+"strip all trailing whitespace in the current file
+map <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 "open the NERDTree
 map ntree :NERDTree<CR>
+"deploy the current file to salesforce
+map <leader>D :w<BAR>make deploy<CR>
+"open project folder
+map <leader>P :cd ~/Documents/SFHome/efDev<BAR>NERDTree<CR>
 
 " open the error console
 map <leader>cc :botright cope<CR> 
