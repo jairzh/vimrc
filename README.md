@@ -2,24 +2,17 @@ Jair's vimrc
 ============
 Forked form https://github.com/vgod/vimrc.
 
-ONE-STEP INSTALL
+Installation
 ----------------
-
-Use curl (for Mac OS X):
 
      curl -o - https://raw.github.com/vgod/vimrc/master/auto-install.sh | sh
 
-or wget (for most UNIX platforms):
-
-     wget -O - https://raw.github.com/vgod/vimrc/master/auto-install.sh | sh
-
-
-MANUALLY INSTALL
+Manual Installation
 ----------------
 
 1. Check out from github
 
-        git clone git://github.com/vgod/vimrc.git ~/.vim
+        git clone git://github.com/jairzh/vimrc.git ~/.vim
         cd ~/.vim
         git submodule update --init
 
@@ -29,27 +22,11 @@ MANUALLY INSTALL
 
 3. (Optional, if you want Command-T) Compile the Command-T plugin
 
-        cd .vim/bundle/command-t/ruby/command-t
-        ruby extconf.rb
-        make
-
-MANUALLY INSTALL ON WINDOWS
----------------------------
-
-1. Check out from github
-
-        cd C:\Program Files\Vim   (or your installed path to Vim)
-        rmdir /s vimfiles         (This deletes your old vim configurations. If you want to keep it, use move instead of rmdir.)
-        git clone git://github.com/vgod/vimrc.git vimfiles
-        git submodule update --init
-
-2. Install vimrc. Add the following line at the end of C:\Program Files\Vim\vimrc.
-
-        source $VIM/vimfiles/vimrc
-
+        cd .vim/bundle/command-t
+        rake make
 
   
-INSTALL & UPGRADE PLUGIN BUNDLES
+Install & Upgrade plugin bundles
 --------------------------------
 
 All plugins (except vim-latex) were checked out as git submodules, 
@@ -68,56 +45,45 @@ To install a new plugin as a git submoudle, type the followin commands.
      cd ~/.vim
      git submodule add [GIT-REPOSITORY-URL] bundle/[PLUGIN-NAME]
 
-HOW TO USE
-----------
-
-see the "USEFUL SHORTCUTS" section in vimrc to learn my shortcuts.
-
-PLUGINS
+Plugins
 -------
 
-* [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332): Pathogen let us install a plugin as a bundle in ~/.vim/bundle seprately.
+* [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332)
 
-* [Nerd Tree](http://www.vim.org/scripts/script.php?script_id=1658): A tree explorer plugin for navigating the filesystem.
+* [Nerd Tree](http://www.vim.org/scripts/script.php?script_id=1658)
 
-  Useful commands:
-  * `:Bookmark [name]` - bookmark any directory as name
-  * `:NERDTree [name]` - open the bookmark [name] in Nerd Tree
+* [AutoClose](http://www.vim.org/scripts/script.php?script_id=1849)
 
-* [AutoClose](http://www.vim.org/scripts/script.php?script_id=1849):  Inserts matching bracket, paren, brace or quote.
+* [vim-surround](https://github.com/tpope/vim-surround/blob/master/doc/surround.txt)
 
-* [vim-surround](https://github.com/tpope/vim-surround/blob/master/doc/surround.txt): deal with pairs of surroundings.
+* [matchit](http://www.vim.org/scripts/script.php?script_id=39)
 
-* [matchit](http://www.vim.org/scripts/script.php?script_id=39): extended % matching for HTML, LaTeX, and many other languages. 
+* [xmledit](http://www.vim.org/scripts/script.php?script_id=301)
 
-* [xmledit](http://www.vim.org/scripts/script.php?script_id=301): XML/HTML tags will be completed automatically.
-
-* [Command-T](https://github.com/wincent/Command-T): open and navigate between files with `cmd-t`.
+* [Command-T](https://github.com/wincent/Command-T)
   
-* [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643): Do all your insert-mode completion with Tab.
+* [SuperTab](http://www.vim.org/scripts/script.php?script_id=1643)
 
-* [snipMate](http://www.vim.org/scripts/script.php?script_id=2540): TextMate-style snippets for Vim
+* [snipMate](http://www.vim.org/scripts/script.php?script_id=2540)
 
-  `:help snipMate` to see more info.
+* [YankRing](http://www.vim.org/scripts/script.php?script_id=1234)
 
-* [YankRing](http://www.vim.org/scripts/script.php?script_id=1234): Maintains a history of previous yanks, changes and deletes 
+* [VisIncr](http://www.vim.org/scripts/script.php?script_id=670)
   
-  `:help yankring` to see more info.
+* [Cute Error Marker](http://www.vim.org/scripts/script.php?script_id=2653)
 
-* [VisIncr](http://www.vim.org/scripts/script.php?script_id=670): Produce increasing/decreasing columns of numbers, dates, or daynames.
-  
-* [Cute Error Marker](http://www.vim.org/scripts/script.php?script_id=2653): showing error and warning icons on line.
-  
-   Note: MacVim users need to enable "Use experimental renderer" to see
-   graphical icons.
+* [vim-latex](http://vim-latex.sourceforge.net/)
 
-* [vim-latex](http://vim-latex.sourceforge.net/): Latex support.
+* [OmniCppComplete](http://www.vim.org/scripts/script.php?script_id=1520)
 
-* [OmniCppComplete](http://www.vim.org/scripts/script.php?script_id=1520): C/C++ omni-completion with ctags database.
+* [JavaComplete](http://www.vim.org/scripts/script.php?script_id=1785)
 
-* [JavaComplete](http://www.vim.org/scripts/script.php?script_id=1785): Java Omni-completion.
+* [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
 
-* [EasyMotion](https://github.com/Lokaltog/vim-easymotion): An easy way to jump to a word.
+* [Ant_menu](https://github.com/vim-scripts/ant_menu.vim)
+
+* [Forcedotcom](https://github.com/ejholmes/vim-forcedotcom)
+
 
 Language specific supports
 --------------------------
@@ -130,6 +96,7 @@ Language specific supports
 Other good references
 ---------------------
 
-* [Synchronizing plugins with git submodules and pathogen](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/) : How to keep your vimrc and plugins synchronized using git submodules and the pathogen plugin
-* [spf13-vim : Steve Francia's Vim Distribution](http://spf13.com/post/perfect-vimrc-vim-config-file
-)
+* [Synchronizing plugins with git submodules and pathogen](http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/) 
+    How to keep your vimrc and plugins synchronized using git submodules and the pathogen plugin
+
+* [spf13-vim : Steve Francia's Vim Distribution](https://github.com/spf13/spf13-vim/tree/master)
